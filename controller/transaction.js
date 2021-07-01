@@ -57,7 +57,7 @@ class Transaction {
 					numberFormat,
 					message: 'card charged'
 				};
-				res.statusCode = 400;
+				res.statusCode = 200;
 				res.end(JSON.stringify(card));
 			});
 		} catch (error) {
