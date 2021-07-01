@@ -1,6 +1,6 @@
 **STEPS TO RUN THE PROJECT**
 
- - Clone the project to you system
+ - Clone the project to your system
  - Navigate into the project
  - run npm start
 
