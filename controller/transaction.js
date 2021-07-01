@@ -17,7 +17,11 @@ class Transaction {
 				if (!cardNumber || !expireDate || !cvv || !email || !phoneNumber) {
 					res.statusCode = 400;
 					return res.end(
-						JSON.stringify({ valid: false, error: 'All Data is required' })
+						JSON.stringify({
+							valid: false,
+							error:
+								'{cardNumber, expireDate, cvv,  email, phoneNumber} are required'
+						})
 					);
 				}
 
