@@ -17,7 +17,7 @@ class Transaction {
 					res.setHeader('Content-Type', 'application/json');
 					const { cardNumber, expireDate, cvv, email, phoneNumber } =
 						JSON.parse(data);
-					let numberFormat;
+
 					if (!cardNumber || !expireDate || !cvv || !email || !phoneNumber) {
 						res.statusCode = 400;
 						return res.end(
@@ -50,6 +50,13 @@ class Transaction {
 						);
 					}
 
+					if (!Validator.mobileNumberValidator(mobile)) {
+						res.statusCode = 400;
+						return res.end(
+							JSON.stringify({ valid: false, error: 'Invalid mobile number' })
+						);
+					}
+
 					if (Validator.phoneFormatter(phoneNumber) === 'Invalid Number') {
 						res.statusCode = 400;
 						return res.end(
@@ -57,12 +64,19 @@ class Transaction {
 						);
 					}
 
-					numberFormat = Validator.phoneFormatter(phoneNumber);
+					if (!Validator.emailValidator(email)) {
+						res.statusCode = 400;
+						return res.end(
+							JSON.stringify({ valid: false, error: 'Invalid Email' })
+						);
+					}
+
+					let country = Validator.phoneFormatter(phoneNumber);
 					let cardType = Validator.checkCardType(cardNumber);
 					let card = {
 						valid: true,
 						cardType,
-						numberFormat,
+						country,
 						message: 'card charged'
 					};
 					res.statusCode = 200;

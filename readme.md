@@ -11,13 +11,14 @@
     "expireDate":"Card expiration date",
     "cvv":"Card CVV",
     "email":"Your email",
-    "phoneNumber":"11 digit phone number"
+    "mobile":"mobile number"
+    "phoneNumber":"mobile number with country code"
     }
 **Response**
 
     {
     "valid":  true,
     "cardType":  "Your card type",
-    "numberFormat":  "Formatted number with nigerian country code",
+    "country":  "name of country",
     "message":  "card charged"
     }
