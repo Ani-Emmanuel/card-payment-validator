@@ -18,13 +18,20 @@ class Transaction {
 					const { cardNumber, expireDate, cvv, email, mobile, phoneNumber } =
 						JSON.parse(data);
 
-					if (!cardNumber || !expireDate || !cvv || !email || !phoneNumber) {
+					if (
+						!cardNumber ||
+						!expireDate ||
+						!cvv ||
+						!email ||
+						!mobile ||
+						!phoneNumber
+					) {
 						res.statusCode = 400;
 						return res.end(
 							JSON.stringify({
 								valid: false,
 								error:
-									'{cardNumber, expireDate, cvv,  email, phoneNumber} are required'
+									'{cardNumber, expireDate, cvv,  email, mobile, phoneNumber} are required'
 							})
 						);
 					}
